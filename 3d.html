@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>Example of Terrain-RGB</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css" rel="stylesheet"></link>
+    <style>
+      #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoidHlwZWJyb29rIiwiYSI6ImNqNHVyaTc5dDBuazczMm1jenl3cG8wb3IifQ.2UEZ-jiHgHvYYqVirXhgpw';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        zoom: 13.1,
+        center: [121.5856, 25.0232],
+        pitch: 85,
+        bearing: 80,
+        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y'
+      });
+  
+      map.on('load', function () {
+        map.addSource('mapbox-dem', {
+          'type': 'raster-dem',
+          'tiles': ['https://osmhacktw.github.io/terrain-rgb/tiles/{z}/{x}/{y}.png'],
+          'tileSize': 256,
+          'maxzoom': 12,
+          'scheme': "tms"
+        });
+        // add the DEM source as a terrain layer with exaggerated height
+        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+  
+        // add a sky layer that will show when the map is highly pitched
+        map.addLayer({
+          'id': 'sky',
+          'type': 'sky',
+          'paint': {
+              'sky-type': 'atmosphere',
+              'sky-atmosphere-sun': [0.0, 0.0],
+              'sky-atmosphere-sun-intensity': 15
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
