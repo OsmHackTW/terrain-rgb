@@ -32,9 +32,10 @@
       map.addSource('hillshading', {
         "type": "raster-dem",
         "tiles": [
-          "http://localhost:8000/tiles/{z}/{x}/{y}.png"
+          "https://osmhacktw.github.io/terrain-rgb/tiles/{z}/{x}/{y}.png"
         ],
         "tileSize": 256,
+        "maxzoom": 12,
         "scheme": "tms"
       })
 
