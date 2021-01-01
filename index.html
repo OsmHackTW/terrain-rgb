@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>Example of Terrain-RGB</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.css" rel="stylesheet"></link>
+    <style>
+      #map { position: absolute; top: 150; bottom: 0; width: 100%; }
+      .interaction {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      .interaction input { width: 20%; }
+    </style>
+  </head>
+  <body>
+    <div class="interaction">
+      <h2>Direction</h2>
+      <input id="slider" type="range" min="0" max="360" step="1" value="0"></input>
+    </div>
+    <div id="map"></div>
+
+    <script>
+      var map = new mapboxgl.Map({
+        container: 'map', // container id
+        center: [121.5856, 25.0232], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+      });
+
+      map.addSource('hillshading', {
+        "type": "raster-dem",
+        "tiles": [
+          "http://localhost:8000/tiles/{z}/{x}/{y}.png"
+        ],
+        "tileSize": 256,
+        "scheme": "tms"
+      })
+
+      map.addLayer({
+        "id": "hillshading",
+        "type": "hillshade",
+        "source": "hillshading",
+        "minzoom": 6
+      });
+
+      map.on('load', function () {
+        document.getElementById('slider').addEventListener('input', function (e) {
+          console.log(e.target.value);
+          map.setPaintProperty(
+            'hillshading', 
+            'hillshade-illumination-direction', 
+            parseInt(e.target.value)
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
