@@ -79,16 +79,15 @@
                   // Create OSM layer
                   var osm = new OpenLayers.Layer.OSM("OpenStreetMap");
 
+          		  
                   // create TMS Overlay layer
-                   var tmsoverlay = new OpenLayers.Layer.TMS("TMS Overlay", "",
-                  {
-                      serviceVersion: '.',
-                      layername: '.',
-                      alpha: true,
-                      type: 'png',
-                      isBaseLayer: false,
-                      getURL: getURL
+                   var tmsoverlay = new OpenLayers.Layer.XYZ("XYZ Overlay",
+                      "${z}/${x}/${y}.png", {
+                      transitionEffect: 'resize',
+                      isBaseLayer: false
                   });
+				  
+		          
                   if (OpenLayers.Util.alphaHack() == false) {
                       tmsoverlay.setOpacity(0.7);
                   }
@@ -110,27 +109,6 @@
                                    new OpenLayers.Control.Attribution()]);
               }
         
-              function getURL(bounds) {
-                  bounds = this.adjustBounds(bounds);
-                  var res = this.getServerResolution();
-                  var x = Math.round((bounds.left - this.tileOrigin.lon) / (res * this.tileSize.w));
-                  var y = Math.round((bounds.bottom - this.tileOrigin.lat) / (res * this.tileSize.h));
-                  var z = this.getServerZoom();
-                  if (this.map.baseLayer.CLASS_NAME === 'OpenLayers.Layer.Bing') {
-                      z+=1;
-                  }
-                  var path = this.serviceVersion + "/" + this.layername + "/" + z + "/" + x + "/" + y + "." + this.type;
-                  var url = this.url;
-                  if (OpenLayers.Util.isArray(url)) {
-                      url = this.selectUrl(path, url);
-                  }
-                  if (mapBounds.intersectsBounds(bounds) && (z >= mapMinZoom) && (z <= mapMaxZoom)) {
-                      return url + path;
-                  } else {
-                      return emptyTileURL;
-                  }
-              }
-            
            function getWindowHeight() {
                 if (self.innerHeight) return self.innerHeight;
                     if (document.documentElement && document.documentElement.clientHeight)
