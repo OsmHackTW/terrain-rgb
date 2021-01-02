@@ -18,7 +18,7 @@
   "version": "1",
   "generator": "rasterio",
   "description": "Mapbox Terrain-RGB tiles with MOI data",
-  "scheme": "tms",
+  "scheme": "xyz",
   "tile_grid": "mercator",
   "tiles": [
     "https://osmhacktw.github.io/terrain-rgb/tiles/{z}/{x}/{y}.png"
