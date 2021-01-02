@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Capabilities version="1.0.0" xmlns="http://www.opengis.net/wmts/1.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd">
+  <ServiceMetadataURL xlink:href="https://osmhacktw.github.io/terrain-rgb/wmts.xml"/>
+  <ows:ServiceIdentification>
+    <ows:ServiceType>OGC WMTS</ows:ServiceType>
+    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+    <ows:Title>terrain-rgb</ows:Title>
+    <ows:Abstract xml:lang="en">The wellknown 'GoogleMapsCompatible' tile matrix set defined by OGC WMTS specification</ows:Abstract>
+    <ows:Keywords>
+      <ows:Keyword>DEM</ows:Keyword>
+      <ows:Keyword>terrain-rgb</ows:Keyword>
+    </ows:Keywords>
+  </ows:ServiceIdentification>
+  <ows:ServiceProvider>
+    <ows:ProviderName>OpenStreetMap Taiwan Community</ows:ProviderName>
+    <ows:ProviderSite xlink:href="https://osm.tw/"/>
+  </ows:ServiceProvider>
+  <Contents>
+    <Layer>
+      <ows:Identifier>terrain-rgb</ows:Identifier>
+      <ows:Title>terrain-rgb</ows:Title>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.18.3:3857">
+        <ows:LowerCorner>13147232.6129 2359473.69823</ows:LowerCorner>
+        <ows:UpperCorner>13684638.5866 3073965.02542</ows:UpperCorner>
+      </ows:BoundingBox>
+      <ows:WGS84BoundingBox crs="urn:ogc:def:crs:OGC:2:84">
+        <ows:LowerCorner>118.1036 20.72799</ows:LowerCorner>
+        <ows:UpperCorner>122.9312 26.60305</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <Style isDefault="true">
+        <ows:Identifier>default</ows:Identifier>
+      </Style>
+      <Format>image/png</Format>
+      <TileMatrixSetLink>
+        <TileMatrixSet>z6to12</TileMatrixSet>
+      </TileMatrixSetLink>
+      <ResourceURL format="image/png" resourceType="tile" template="https://osmhacktw.github.io/terrain-rgb/tiles/{TileMatrix}/{TileCol}/{TileRow}.png"/>
+    </Layer>
+    <TileMatrixSet>
+      <ows:Identifier>z6to12</ows:Identifier>
+      <ows:SupportedCRS>urn:ogc:def:crs:EPSG:6.18.3:3857</ows:SupportedCRS>
+      <TileMatrix>
+        <ows:Identifier>6</ows:Identifier>
+        <ScaleDenominator>8735660.375448714942</ScaleDenominator>
+        <TopLeftCorner>-20037508.34278924 20037508.34278924</TopLeftCorner>
+        <TileWidth>256</TileWidth>
+        <TileHeight>256</TileHeight>
+        <MatrixWidth>64</MatrixWidth>
+        <MatrixHeight>64</MatrixHeight>
+      </TileMatrix>
+      <TileMatrix>
+        <ows:Identifier>7</ows:Identifier>
+        <ScaleDenominator>4367830.187724357471</ScaleDenominator>
+        <TopLeftCorner>-20037508.34278924 20037508.34278924</TopLeftCorner>
+        <TileWidth>256</TileWidth>
+        <TileHeight>256</TileHeight>
+        <MatrixWidth>128</MatrixWidth>
+        <MatrixHeight>128</MatrixHeight>
+      </TileMatrix>
+      <TileMatrix>
+        <ows:Identifier>8</ows:Identifier>
+        <ScaleDenominator>2183915.093862178735</ScaleDenominator>
+        <TopLeftCorner>-20037508.34278924 20037508.34278924</TopLeftCorner>
+        <TileWidth>256</TileWidth>
+        <TileHeight>256</TileHeight>
+        <MatrixWidth>256</MatrixWidth>
+        <MatrixHeight>256</MatrixHeight>
+      </TileMatrix>
+      <TileMatrix>
+        <ows:Identifier>9</ows:Identifier>
+        <ScaleDenominator>1091957.546931089368</ScaleDenominator>
+        <TopLeftCorner>-20037508.34278924 20037508.34278924</TopLeftCorner>
+        <TileWidth>256</TileWidth>
+        <TileHeight>256</TileHeight>
+        <MatrixWidth>512</MatrixWidth>
+        <MatrixHeight>512</MatrixHeight>
+      </TileMatrix>
+      <TileMatrix>
+        <ows:Identifier>10</ows:Identifier>
+        <ScaleDenominator>545978.773465544684</ScaleDenominator>
+        <TopLeftCorner>-20037508.34278924 20037508.34278924</TopLeftCorner>
+        <TileWidth>256</TileWidth>
+        <TileHeight>256</TileHeight>
+        <MatrixWidth>1024</MatrixWidth>
+        <MatrixHeight>1024</MatrixHeight>
+      </TileMatrix>
+      <TileMatrix>
+        <ows:Identifier>11</ows:Identifier>
+        <ScaleDenominator>272989.386732772342</ScaleDenominator>
+        <TopLeftCorner>-20037508.34278924 20037508.34278924</TopLeftCorner>
+        <TileWidth>256</TileWidth>
+        <TileHeight>256</TileHeight>
+        <MatrixWidth>2048</MatrixWidth>
+        <MatrixHeight>2048</MatrixHeight>
+      </TileMatrix>
+      <TileMatrix>
+        <ows:Identifier>12</ows:Identifier>
+        <ScaleDenominator>136494.693366386171</ScaleDenominator>
+        <TopLeftCorner>-20037508.34278924 20037508.34278924</TopLeftCorner>
+        <TileWidth>256</TileWidth>
+        <TileHeight>256</TileHeight>
+        <MatrixWidth>4096</MatrixWidth>
+        <MatrixHeight>4096</MatrixHeight>
+      </TileMatrix>
+    </TileMatrixSet>
+  </Contents>
+</Capabilities>
+
