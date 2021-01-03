@@ -24,4 +24,4 @@ dem_20m_RGB.tif: dem_20m_EPSG3857.tif
 
 # Need GDAL >3.2.0 for xyz options
 tiles/: dem_20m_RGB.tif
-	gdal2tiles.py --xyz --zoom=7-12 -r=near -s=EPSG:3857 --processes=8 $< $@
+	gdal2tiles.py --xyz --zoom=7-12 -r near -s=EPSG:3857 --processes=8 $< $@
