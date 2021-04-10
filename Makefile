@@ -22,6 +22,18 @@ dem_20m_EPSG3857.tif: dem_20m.tif
 dem_20m_RGB.tif: dem_20m_EPSG3857.tif
 	rio rgbify -b -10000 -i 0.1 $< $@
 
-# Need GDAL >3.2.0 for xyz options
+# Need GDAL >3.1.0 for xyz options
 tiles/: dem_20m_RGB.tif
-	gdal2tiles.py --xyz --zoom=7-12 -r near -s=EPSG:3857 --processes=8 $< $@
+	./gdal2tiles.py --xyz --zoom=7-12 -r near -s=EPSG:3857 --processes=8 $< $@
+
+terrain-rgb.mbtiles: tiles/
+	cat <<EOF >$</metadata.json
+	{
+		"name": "terrain-rgb",
+		"type": "overlay",
+		"description": "Terrain RGB tiles from MOI 20m DEM",
+		"version": "3",
+		"format": "png"
+	}
+	EOF
+	mb-util $< $@
